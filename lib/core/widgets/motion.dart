@@ -123,7 +123,7 @@ class _RevealState extends State<Reveal> with SingleTickerProviderStateMixin {
     if (_controller.isDismissed) return const SizedBox(width: double.infinity);
     return SizeTransition(
       sizeFactor: _curve,
-      axisAlignment: -1,
+      alignment: Alignment.topCenter,
       child: FadeTransition(opacity: _curve, child: widget.child),
     );
   }

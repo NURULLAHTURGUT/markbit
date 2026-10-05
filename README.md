@@ -9,7 +9,7 @@ A fast, offline-first notebook for developers — write notes, run the code insi
 
 [![Validate](https://github.com/NURULLAHTURGUT/markbit/actions/workflows/validation.yml/badge.svg)](https://github.com/NURULLAHTURGUT/markbit/actions/workflows/validation.yml)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D6)
-![Flutter](https://img.shields.io/badge/Flutter-3.35-02569B?logo=flutter)
+![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 [**Download**](#-download) · [Features](#-features) · [Build from source](#-build-from-source) · [Contributing](#-contributing)
@@ -149,7 +149,7 @@ API keys are stored in the operating system's secure storage and are never inclu
 
 ## 🛠️ Build from source
 
-**Requirements:** [Flutter 3.35.5](https://docs.flutter.dev/get-started/install) (stable) and, for Windows, Visual Studio with the *Desktop development with C++* workload.
+**Requirements:** [Flutter 3.47.6](https://docs.flutter.dev/get-started/install) (stable) and, for Windows, Visual Studio with the *Desktop development with C++* workload.
 
 ```bash
 git clone https://github.com/NURULLAHTURGUT/markbit.git
@@ -164,21 +164,7 @@ Release build:
 flutter build windows --release
 ```
 
-The app is written to `build/windows/x64/runner/Release/`.
-
-<details>
-<summary><b>Using Visual Studio 2026?</b></summary>
-
-Flutter 3.35 does not detect Visual Studio 2026 yet, so `flutter build windows` falls back to an older generator. Configure and build with CMake directly:
-
-```bash
-cmake -S windows -B build/windows/x64-vs2026 -G "Visual Studio 18 2026" -A x64 -DFLUTTER_TARGET_PLATFORM=windows-x64
-cmake --build build/windows/x64-vs2026 --config Release
-cmake --install build/windows/x64-vs2026 --config Release
-```
-
-The app is written to `build/windows/x64-vs2026/runner/Release/markbit.exe`.
-</details>
+The app is written to `build/windows/x64/runner/Release/markbit.exe`. Copy the whole `Release` folder to run it on another computer.
 
 Run the checks used by CI:
 

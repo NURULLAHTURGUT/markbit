@@ -5,14 +5,12 @@ on:
   workflow_dispatch:
 jobs:
   windows:
-    # windows-latest ships Visual Studio 2026, which Flutter 3.35 cannot use
-    # yet (flutter/flutter#180481). windows-2022 has Visual Studio 2022.
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.35.5'
+          flutter-version: '3.47.6'
           channel: stable
           cache: true
       - run: flutter pub get
