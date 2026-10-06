@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest an idea or an improvement.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Please check [existing issues](https://github.com/NURULLAHTURGUT/markbit/issues) to see whether it was already suggested.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the situation and what is hard or impossible today.
+      placeholder: "When I … I have to … because …"
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Your idea
+      description: How could Markbit help? Sketches or examples from other apps are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contributing
+      options:
+        - label: I would like to work on this myself.

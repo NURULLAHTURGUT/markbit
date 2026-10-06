@@ -9,7 +9,10 @@ void main() {
   testWidgets('startup error is English by default', (tester) async {
     var retried = false;
     await tester.pumpWidget(StartupErrorApp(onRetry: () => retried = true));
-    expect(find.textContaining('Your data could not be opened'), findsOneWidget);
+    expect(
+      find.textContaining('Your data could not be opened'),
+      findsOneWidget,
+    );
     await tester.tap(find.text('Retry'));
     expect(retried, isTrue);
   });

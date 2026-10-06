@@ -631,43 +631,57 @@ const Map<String, String> trMisc = {
   'Your data could not be opened. Your existing files are kept.\nCheck disk access and try again.':
       'Veriler açılamadı. Mevcut dosyalarınız korunuyor.\nDisk erişimini kontrol edip yeniden deneyin.',
   'A few preferences': 'Birkaç tercih',
-  'Ask about the note you are editing, find bugs or draft text. Suggested changes are only written after you approve them.': 'Düzenlediğin not hakkında soru sor, hata bul ya da metin taslağı hazırla. Önerilen değişiklikler yalnızca sen onayladıktan sonra yazılır.',
+  'Ask about the note you are editing, find bugs or draft text. Suggested changes are only written after you approve them.':
+      'Düzenlediğin not hakkında soru sor, hata bul ya da metin taslağı hazırla. Önerilen değişiklikler yalnızca sen onayladıktan sonra yazılır.',
   'Ask the AI assistant': 'Yapay zeka asistanına sor',
-  'Checkboxes become tasks with due dates, priorities and repeats. Reminders arrive even when Markbit is closed.': 'Onay kutuları; bitiş tarihi, öncelik ve tekrarı olan görevlere dönüşür. Hatırlatmalar Markbit kapalıyken bile gelir.',
+  'Checkboxes become tasks with due dates, priorities and repeats. Reminders arrive even when Markbit is closed.':
+      'Onay kutuları; bitiş tarihi, öncelik ve tekrarı olan görevlere dönüşür. Hatırlatmalar Markbit kapalıyken bile gelir.',
   'Choose your language': 'Dilini seç',
   'Compact': 'Kompakt',
-  'Edit on the left and see the result on the right: math, diagrams, tables, charts and images, updated as you type.': 'Solda düzenle, sağda sonucu gör: formüller, diyagramlar, tablolar, grafikler ve görseller yazdıkça güncellenir.',
+  'Edit on the left and see the result on the right: math, diagrams, tables, charts and images, updated as you type.':
+      'Solda düzenle, sağda sonucu gör: formüller, diyagramlar, tablolar, grafikler ve görseller yazdıkça güncellenir.',
   'Find anything in seconds': 'Her şeyi saniyeler içinde bul',
-  'Get reminded of due tasks, even when Markbit is closed.': 'Markbit kapalıyken bile zamanı gelen görevler için hatırlatma al.',
+  'Get reminded of due tasks, even when Markbit is closed.':
+      'Markbit kapalıyken bile zamanı gelen görevler için hatırlatma al.',
   'Get started': 'Başlayalım',
   'Handy shortcuts': 'İşe yarar kısayollar',
   'Interface size': 'Arayüz boyutu',
   'Keep everything organised': 'Her şeyi düzenli tut',
   'Large': 'Büyük',
-  'Markbit will use it everywhere. You can change it any time in Settings.': 'Markbit her yerde bu dili kullanacak. İstediğin zaman Ayarlar\'dan değiştirebilirsin.',
-  'Markdown notes that run code. Let\'s set things up in a minute and take a quick look at what you can do.': 'Kod çalıştıran Markdown notları. Bir dakikada ayarları yapalım ve neler yapabileceğine kısaca bakalım.',
+  'Markbit will use it everywhere. You can change it any time in Settings.':
+      'Markbit her yerde bu dili kullanacak. İstediğin zaman Ayarlar\'dan değiştirebilirsin.',
+  'Markdown notes that run code. Let\'s set things up in a minute and take a quick look at what you can do.':
+      'Kod çalıştıran Markdown notları. Bir dakikada ayarları yapalım ve neler yapabileceğine kısaca bakalım.',
   'Next': 'İleri',
-  'Notebooks, tags, statuses, pinned and starred notes, covers and wiki links keep a growing library easy to browse.': 'Defterler, etiketler, durumlar, sabitlenmiş ve yıldızlı notlar, kapaklar ve wiki bağlantıları büyüyen kütüphaneni kolayca gezilebilir tutar.',
-  'Offer completions for lists, tables and code blocks while you type.': 'Yazarken listeler, tablolar ve kod blokları için tamamlama öner.',
+  'Notebooks, tags, statuses, pinned and starred notes, covers and wiki links keep a growing library easy to browse.':
+      'Defterler, etiketler, durumlar, sabitlenmiş ve yıldızlı notlar, kapaklar ve wiki bağlantıları büyüyen kütüphaneni kolayca gezilebilir tutar.',
+  'Offer completions for lists, tables and code blocks while you type.':
+      'Yazarken listeler, tablolar ve kod blokları için tamamlama öner.',
   'Offline & private': 'Çevrimdışı ve gizli',
   'Open the AI assistant': 'Yapay zeka asistanını aç',
   'Pick a look': 'Görünümünü seç',
   'Plan with tasks and reminders': 'Görevler ve hatırlatıcılarla planla',
-  'Press Ctrl+K to search every note and run any command. Filters like tag:, lang: or has:tasks narrow things down.': 'Tüm notlarda aramak ve herhangi bir komutu çalıştırmak için Ctrl+K\'ye bas. tag:, lang: ya da has:tasks gibi filtreler sonuçları daraltır.',
-  'Press Run on any code block — Python, JavaScript, Go, Rust, SQL and more. The output appears right below your note.': 'Herhangi bir kod bloğunda Çalıştır\'a bas — Python, JavaScript, Go, Rust, SQL ve daha fazlası. Çıktı notunun hemen altında görünür.',
+  'Press Ctrl+K to search every note and run any command. Filters like tag:, lang: or has:tasks narrow things down.':
+      'Tüm notlarda aramak ve herhangi bir komutu çalıştırmak için Ctrl+K\'ye bas. tag:, lang: ya da has:tasks gibi filtreler sonuçları daraltır.',
+  'Press Run on any code block — Python, JavaScript, Go, Rust, SQL and more. The output appears right below your note.':
+      'Herhangi bir kod bloğunda Çalıştır\'a bas — Python, JavaScript, Go, Rust, SQL ve daha fazlası. Çıktı notunun hemen altında görünür.',
   'Run code': 'Kod çalıştır',
   'Run code where you write it': 'Kodu yazdığın yerde çalıştır',
   'Run the code block at the cursor': 'İmleçteki kod bloğunu çalıştır',
   'Search and run any command': 'Ara ve herhangi bir komutu çalıştır',
-  'Sensible defaults are already set. Adjust anything you like.': 'Makul varsayılanlar zaten ayarlı. İstediğini değiştirebilirsin.',
-  'Show line numbers next to the editor.': 'Editörün yanında satır numaralarını göster.',
+  'Sensible defaults are already set. Adjust anything you like.':
+      'Makul varsayılanlar zaten ayarlı. İstediğini değiştirebilirsin.',
+  'Show line numbers next to the editor.':
+      'Editörün yanında satır numaralarını göster.',
   'Skip': 'Atla',
   'Start': 'Başla',
   'System language': 'Sistem dili',
   'Task reminders as notifications': 'Bildirim olarak görev hatırlatmaları',
-  'Themes apply instantly. "System" follows your light or dark mode.': 'Temalar anında uygulanır. "Sistem", açık ya da koyu modunu izler.',
+  'Themes apply instantly. "System" follows your light or dark mode.':
+      'Temalar anında uygulanır. "Sistem", açık ya da koyu modunu izler.',
   'Welcome to Markbit': 'Markbit\'e hoş geldin',
   'Write in Markdown': 'Markdown ile yaz',
   'You\'re all set': 'Her şey hazır',
-  'Your notes stay on this device. Add an AI provider any time in Settings → AI assistant.': 'Notların bu cihazda kalır. İstediğin zaman Ayarlar → Yapay zeka asistanı bölümünden bir yapay zeka sağlayıcısı ekleyebilirsin.',
+  'Your notes stay on this device. Add an AI provider any time in Settings → AI assistant.':
+      'Notların bu cihazda kalır. İstediğin zaman Ayarlar → Yapay zeka asistanı bölümünden bir yapay zeka sağlayıcısı ekleyebilirsin.',
 };

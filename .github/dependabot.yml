@@ -1,0 +1,27 @@
+# Weekly update pull requests for Dart/Flutter packages and GitHub Actions.
+# Security fixes are opened as soon as an advisory is published, separately.
+version: 2
+updates:
+  - package-ecosystem: pub
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      # Patch and minor bumps arrive together; major versions get their own PR.
+      packages:
+        update-types: [minor, patch]
+    commit-message:
+      prefix: "deps"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "ci"

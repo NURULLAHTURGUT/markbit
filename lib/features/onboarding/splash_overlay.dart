@@ -265,10 +265,7 @@ class _LogoPainter extends CustomPainter {
       draw();
       return;
     }
-    canvas.saveLayer(
-      null,
-      Paint()..color = Color.fromRGBO(0, 0, 0, opacity),
-    );
+    canvas.saveLayer(null, Paint()..color = Color.fromRGBO(0, 0, 0, opacity));
     draw();
     canvas.restore();
   }

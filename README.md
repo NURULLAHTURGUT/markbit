@@ -209,7 +209,7 @@ lib/
 
 ## 🤝 Contributing
 
-Contributions are very welcome — bug reports, ideas, translations and code.
+Contributions are very welcome — bug reports, ideas, translations and code. Read the [contributing guide](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md) to get started.
 
 1. Open an [issue](https://github.com/NURULLAHTURGUT/markbit/issues) to report a bug or discuss a feature
 2. Fork the repo and create a branch: `git checkout -b feature/my-idea`

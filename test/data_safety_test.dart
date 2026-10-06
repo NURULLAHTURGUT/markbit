@@ -285,45 +285,41 @@ void main() {
   });
 
   group('external changes', () {
-    test(
-      'own saves are ignored, other programs are reported',
-      () async {
-        final repo = await FileLibraryRepository.open(root: root);
-        final changes = <ExternalChange>[];
-        final sub = repo
-            .watchExternalChanges(debounce: const Duration(milliseconds: 100))
-            .listen(changes.add);
-        addTearDown(sub.cancel);
-        await Future<void>.delayed(const Duration(milliseconds: 200));
+    test('own saves are ignored, other programs are reported', () async {
+      final repo = await FileLibraryRepository.open(root: root);
+      final changes = <ExternalChange>[];
+      final sub = repo
+          .watchExternalChanges(debounce: const Duration(milliseconds: 100))
+          .listen(changes.add);
+      addTearDown(sub.cancel);
+      await Future<void>.delayed(const Duration(milliseconds: 200));
 
-        final now = DateTime(2026, 10, 5);
-        final note = Note(
-          id: 'watched',
-          title: 'Watched',
-          body: 'from markbit',
-          createdAt: now,
-          updatedAt: now,
-        );
-        await repo.saveNote(note);
-        await Future<void>.delayed(const Duration(milliseconds: 600));
-        expect(changes, isEmpty);
+      final now = DateTime(2026, 10, 5);
+      final note = Note(
+        id: 'watched',
+        title: 'Watched',
+        body: 'from markbit',
+        createdAt: now,
+        updatedAt: now,
+      );
+      await repo.saveNote(note);
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+      expect(changes, isEmpty);
 
-        final file = File(p.join(root.path, 'notes', 'watched.json'));
-        await file.writeAsString(
-          jsonEncode(note.copyWith(body: 'from a sync client').toJson()),
-        );
-        await Future<void>.delayed(const Duration(milliseconds: 600));
-        expect(
-          changes.whereType<ExternalNoteChanged>().single.note.body,
-          'from a sync client',
-        );
+      final file = File(p.join(root.path, 'notes', 'watched.json'));
+      await file.writeAsString(
+        jsonEncode(note.copyWith(body: 'from a sync client').toJson()),
+      );
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+      expect(
+        changes.whereType<ExternalNoteChanged>().single.note.body,
+        'from a sync client',
+      );
 
-        await file.delete();
-        await Future<void>.delayed(const Duration(milliseconds: 600));
-        expect(changes.whereType<ExternalNoteRemoved>().single.id, 'watched');
-      },
-      skip: !FileSystemEntity.isWatchSupported,
-    );
+      await file.delete();
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+      expect(changes.whereType<ExternalNoteRemoved>().single.id, 'watched');
+    }, skip: !FileSystemEntity.isWatchSupported);
 
     test('applying a change does not write it back', () async {
       final (container, repo) = await open();

@@ -52,20 +52,16 @@ void main() {
   ];
 
   for (final (id, code, expected) in cases) {
-    test(
-      'local $id runs code with stdin',
-      () async {
-        final lang = Languages.find(id)!;
-        if (await local.detect(lang) == null) {
-          markTestSkipped('$id toolchain not installed');
-          return;
-        }
-        final r = await run(lang, code, stdin: 'markbit');
-        expect(r.done.success, isTrue, reason: r.err);
-        expect(r.out.trim(), expected);
-      },
-      timeout: const Timeout(Duration(seconds: 60)),
-    );
+    test('local $id runs code with stdin', () async {
+      final lang = Languages.find(id)!;
+      if (await local.detect(lang) == null) {
+        markTestSkipped('$id toolchain not installed');
+        return;
+      }
+      final r = await run(lang, code, stdin: 'markbit');
+      expect(r.done.success, isTrue, reason: r.err);
+      expect(r.out.trim(), expected);
+    }, timeout: const Timeout(Duration(seconds: 60)));
   }
 
   test('non-zero exit code and stderr are reported', () async {

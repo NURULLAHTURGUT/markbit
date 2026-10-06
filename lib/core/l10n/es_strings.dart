@@ -1040,43 +1040,58 @@ const Map<String, String> esStrings = {
   'Your data could not be opened. Your existing files are kept.\nCheck disk access and try again.':
       'No se pudieron abrir tus datos. Tus archivos existentes se conservan.\nComprueba el acceso al disco e inténtalo de nuevo.',
   'A few preferences': 'Algunas preferencias',
-  'Ask about the note you are editing, find bugs or draft text. Suggested changes are only written after you approve them.': 'Pregunta sobre la nota que editas, encuentra errores o redacta texto. Los cambios sugeridos solo se escriben cuando los apruebas.',
+  'Ask about the note you are editing, find bugs or draft text. Suggested changes are only written after you approve them.':
+      'Pregunta sobre la nota que editas, encuentra errores o redacta texto. Los cambios sugeridos solo se escriben cuando los apruebas.',
   'Ask the AI assistant': 'Pregunta al asistente de IA',
-  'Checkboxes become tasks with due dates, priorities and repeats. Reminders arrive even when Markbit is closed.': 'Las casillas se convierten en tareas con fecha, prioridad y repetición. Los recordatorios llegan incluso con Markbit cerrado.',
+  'Checkboxes become tasks with due dates, priorities and repeats. Reminders arrive even when Markbit is closed.':
+      'Las casillas se convierten en tareas con fecha, prioridad y repetición. Los recordatorios llegan incluso con Markbit cerrado.',
   'Choose your language': 'Elige tu idioma',
   'Compact': 'Compacto',
-  'Edit on the left and see the result on the right: math, diagrams, tables, charts and images, updated as you type.': 'Edita a la izquierda y mira el resultado a la derecha: fórmulas, diagramas, tablas, gráficos e imágenes al escribir.',
+  'Edit on the left and see the result on the right: math, diagrams, tables, charts and images, updated as you type.':
+      'Edita a la izquierda y mira el resultado a la derecha: fórmulas, diagramas, tablas, gráficos e imágenes al escribir.',
   'Find anything in seconds': 'Encuentra todo en segundos',
-  'Get reminded of due tasks, even when Markbit is closed.': 'Recibe avisos de tareas pendientes, incluso con Markbit cerrado.',
+  'Get reminded of due tasks, even when Markbit is closed.':
+      'Recibe avisos de tareas pendientes, incluso con Markbit cerrado.',
   'Get started': 'Empezar',
   'Handy shortcuts': 'Atajos útiles',
   'Interface size': 'Tamaño de la interfaz',
   'Keep everything organised': 'Mantén todo organizado',
   'Large': 'Grande',
-  'Markbit will use it everywhere. You can change it any time in Settings.': 'Markbit lo usará en todas partes. Puedes cambiarlo cuando quieras en Ajustes.',
-  'Markdown notes that run code. Let\'s set things up in a minute and take a quick look at what you can do.': 'Notas Markdown que ejecutan código. Configuremos todo en un minuto y veamos rápidamente lo que puedes hacer.',
+  'Markbit will use it everywhere. You can change it any time in Settings.':
+      'Markbit lo usará en todas partes. Puedes cambiarlo cuando quieras en Ajustes.',
+  'Markdown notes that run code. Let\'s set things up in a minute and take a quick look at what you can do.':
+      'Notas Markdown que ejecutan código. Configuremos todo en un minuto y veamos rápidamente lo que puedes hacer.',
   'Next': 'Siguiente',
-  'Notebooks, tags, statuses, pinned and starred notes, covers and wiki links keep a growing library easy to browse.': 'Cuadernos, etiquetas, estados, notas fijadas y destacadas, portadas y enlaces wiki mantienen tu biblioteca fácil de recorrer.',
-  'Offer completions for lists, tables and code blocks while you type.': 'Sugerir completados para listas, tablas y bloques de código al escribir.',
+  'Notebooks, tags, statuses, pinned and starred notes, covers and wiki links keep a growing library easy to browse.':
+      'Cuadernos, etiquetas, estados, notas fijadas y destacadas, portadas y enlaces wiki mantienen tu biblioteca fácil de recorrer.',
+  'Offer completions for lists, tables and code blocks while you type.':
+      'Sugerir completados para listas, tablas y bloques de código al escribir.',
   'Offline & private': 'Sin conexión y privado',
   'Open the AI assistant': 'Abrir el asistente de IA',
   'Pick a look': 'Elige un aspecto',
   'Plan with tasks and reminders': 'Planifica con tareas y recordatorios',
-  'Press Ctrl+K to search every note and run any command. Filters like tag:, lang: or has:tasks narrow things down.': 'Pulsa Ctrl+K para buscar en todas las notas y ejecutar cualquier comando. Filtros como tag:, lang: o has:tasks acotan los resultados.',
-  'Press Run on any code block — Python, JavaScript, Go, Rust, SQL and more. The output appears right below your note.': 'Pulsa Ejecutar en cualquier bloque de código — Python, JavaScript, Go, Rust, SQL y más. La salida aparece justo debajo de tu nota.',
+  'Press Ctrl+K to search every note and run any command. Filters like tag:, lang: or has:tasks narrow things down.':
+      'Pulsa Ctrl+K para buscar en todas las notas y ejecutar cualquier comando. Filtros como tag:, lang: o has:tasks acotan los resultados.',
+  'Press Run on any code block — Python, JavaScript, Go, Rust, SQL and more. The output appears right below your note.':
+      'Pulsa Ejecutar en cualquier bloque de código — Python, JavaScript, Go, Rust, SQL y más. La salida aparece justo debajo de tu nota.',
   'Run code': 'Ejecutar código',
   'Run code where you write it': 'Ejecuta el código donde lo escribes',
   'Run the code block at the cursor': 'Ejecutar el bloque de código del cursor',
   'Search and run any command': 'Buscar y ejecutar cualquier comando',
-  'Sensible defaults are already set. Adjust anything you like.': 'Ya hay valores predeterminados razonables. Ajusta lo que quieras.',
-  'Show line numbers next to the editor.': 'Mostrar números de línea junto al editor.',
+  'Sensible defaults are already set. Adjust anything you like.':
+      'Ya hay valores predeterminados razonables. Ajusta lo que quieras.',
+  'Show line numbers next to the editor.':
+      'Mostrar números de línea junto al editor.',
   'Skip': 'Omitir',
   'Start': 'Comenzar',
   'System language': 'Idioma del sistema',
-  'Task reminders as notifications': 'Recordatorios de tareas como notificaciones',
-  'Themes apply instantly. "System" follows your light or dark mode.': 'Los temas se aplican al instante. "Sistema" sigue tu modo claro u oscuro.',
+  'Task reminders as notifications':
+      'Recordatorios de tareas como notificaciones',
+  'Themes apply instantly. "System" follows your light or dark mode.':
+      'Los temas se aplican al instante. "Sistema" sigue tu modo claro u oscuro.',
   'Welcome to Markbit': 'Te damos la bienvenida a Markbit',
   'Write in Markdown': 'Escribe en Markdown',
   'You\'re all set': 'Todo listo',
-  'Your notes stay on this device. Add an AI provider any time in Settings → AI assistant.': 'Tus notas se quedan en este dispositivo. Añade un proveedor de IA cuando quieras en Ajustes → Asistente de IA.',
+  'Your notes stay on this device. Add an AI provider any time in Settings → AI assistant.':
+      'Tus notas se quedan en este dispositivo. Añade un proveedor de IA cuando quieras en Ajustes → Asistente de IA.',
 };

@@ -11,8 +11,9 @@ const _doneKey = 'onboarding_done_v1';
 
 /// True while the welcome tour is open, which happens on the very first
 /// launch only.
-final onboardingPendingProvider =
-    NotifierProvider<OnboardingNotifier, bool>(OnboardingNotifier.new);
+final onboardingPendingProvider = NotifierProvider<OnboardingNotifier, bool>(
+  OnboardingNotifier.new,
+);
 
 class OnboardingNotifier extends Notifier<bool> {
   @override
