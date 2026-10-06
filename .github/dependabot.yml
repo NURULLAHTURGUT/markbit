@@ -19,6 +19,16 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+      # Breaking releases that the rule above misses (Dart `^` constraints and
+      # 0.x versions). Each needs its own migration and a manual app test.
+      - dependency-name: "sqlite3_flutter_libs"
+        versions: [">=0.6.0"] # empty since sqlite3 3.x; would drop SQLite
+      - dependency-name: "flutter_local_notifications"
+        versions: [">=21.0.0"]
+      - dependency-name: "xml"
+        versions: [">=7.0.0"]
+      - dependency-name: "timezone"
+        versions: [">=0.11.0"]
 
   - package-ecosystem: github-actions
     directory: /
