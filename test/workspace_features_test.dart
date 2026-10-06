@@ -377,10 +377,14 @@ void main() {
       UncontrolledProviderScope(container: c, child: const MarkbitApp()),
     );
     await tester.pumpAndSettle();
+    // App shortcuts use Cmd on macOS and Ctrl elsewhere.
+    final modifier = Platform.isMacOS
+        ? LogicalKeyboardKey.metaLeft
+        : LogicalKeyboardKey.controlLeft;
     Future<void> ctrl(LogicalKeyboardKey key) async {
-      await tester.sendKeyDownEvent(LogicalKeyboardKey.controlLeft);
+      await tester.sendKeyDownEvent(modifier);
       await tester.sendKeyEvent(key);
-      await tester.sendKeyUpEvent(LogicalKeyboardKey.controlLeft);
+      await tester.sendKeyUpEvent(modifier);
       await tester.pumpAndSettle();
     }
 

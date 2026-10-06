@@ -177,7 +177,8 @@ enum AppShortcut {
     italic => KeyCombo.mod(LogicalKeyboardKey.keyI),
     inlineCode => KeyCombo.mod(LogicalKeyboardKey.keyE),
     runCode => KeyCombo.mod(LogicalKeyboardKey.enter),
-    suggestions => KeyCombo.mod(LogicalKeyboardKey.space),
+    // Ctrl+Space everywhere: on macOS, Cmd+Space opens Spotlight.
+    suggestions => const KeyCombo(LogicalKeyboardKey.space, control: true),
   };
 }
 
