@@ -27,6 +27,7 @@ import '../../data/models/note.dart';
 import '../../domain/ai/ai_client.dart';
 import '../../domain/languages.dart';
 import '../../core/widgets/app_dialog.dart';
+import '../../core/widgets/theme_preview.dart';
 import '../../core/widgets/app_icon_button.dart';
 import '../dialogs/dialogs.dart';
 import '../dialogs/import_dialog.dart';
@@ -354,14 +355,14 @@ class _AppearanceTab extends ConsumerWidget {
                         ? Stack(
                             fit: StackFit.expand,
                             children: [
-                              _ThemePreview(Palettes.light),
+                              ThemePreview(Palettes.light),
                               ClipPath(
-                                clipper: _DiagonalClipper(),
-                                child: _ThemePreview(Palettes.dark),
+                                clipper: DiagonalClipper(),
+                                child: ThemePreview(Palettes.dark),
                               ),
                             ],
                           )
-                        : _ThemePreview(palette),
+                        : ThemePreview(palette),
                   ),
                 ),
                 const SizedBox(height: Sp.sm),
@@ -463,129 +464,6 @@ class _AppearanceTab extends ConsumerWidget {
       ],
     );
   }
-}
-
-/// A miniature of the app (sidebar, note list, editor) drawn in [palette],
-/// so theme cards show how the theme will actually look.
-class _ThemePreview extends StatelessWidget {
-  const _ThemePreview(this.palette);
-  final AppPalette palette;
-
-  @override
-  Widget build(BuildContext context) {
-    final pal = palette;
-    Widget line(Color color, double width, {double height = 4}) => Container(
-      width: width,
-      height: height,
-      margin: const EdgeInsets.only(bottom: 5),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(Rad.pill),
-      ),
-    );
-    final backdrop = pal.isGlass
-        ? LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: pal.isDark
-                ? const [Color(0xFF29333D), Color(0xFF17232E)]
-                : const [Color(0xFFDCECF5), Color(0xFFC2D4E8)],
-          )
-        : null;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: backdrop,
-        color: backdrop == null ? pal.editorBg : null,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: 30,
-            color: pal.sidebarBg,
-            padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                line(pal.accent, 16),
-                line(pal.textFaint.withValues(alpha: .6), 18),
-                line(pal.textFaint.withValues(alpha: .6), 14),
-                line(pal.textFaint.withValues(alpha: .6), 17),
-              ],
-            ),
-          ),
-          Container(
-            width: 42,
-            color: pal.listBg,
-            padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 18,
-                  margin: const EdgeInsets.only(bottom: 5),
-                  decoration: BoxDecoration(
-                    color: pal.selection,
-                    borderRadius: BorderRadius.circular(Rad.xs),
-                  ),
-                ),
-                line(pal.text.withValues(alpha: .55), 26),
-                line(pal.textFaint.withValues(alpha: .5), 30),
-                line(pal.text.withValues(alpha: .55), 22),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: pal.isGlass ? null : pal.editorBg,
-              padding: const EdgeInsets.fromLTRB(7, 9, 6, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  line(pal.text, 34, height: 6),
-                  line(pal.textMuted.withValues(alpha: .6), 48),
-                  line(pal.textMuted.withValues(alpha: .6), 40),
-                  Row(
-                    children: [
-                      line(pal.synKeyword, 12),
-                      const SizedBox(width: 3),
-                      line(pal.synString, 18),
-                    ],
-                  ),
-                  const Spacer(),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      width: 20,
-                      height: 9,
-                      margin: const EdgeInsets.only(bottom: 6),
-                      decoration: BoxDecoration(
-                        color: pal.accent,
-                        borderRadius: BorderRadius.circular(Rad.xs),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _DiagonalClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) => Path()
-    ..moveTo(size.width * .62, 0)
-    ..lineTo(size.width, 0)
-    ..lineTo(size.width, size.height)
-    ..lineTo(size.width * .38, size.height)
-    ..close();
-
-  @override
-  bool shouldReclip(_DiagonalClipper oldClipper) => false;
 }
 
 /// Compact filled dropdown shared by settings pages, so every selector has

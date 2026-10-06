@@ -54,6 +54,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icon/markbit.png
+    - assets/onboarding/
     - assets/fonts/
   fonts:
     - family: Inter

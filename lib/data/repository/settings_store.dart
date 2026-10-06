@@ -79,6 +79,9 @@ class SettingsStore {
   static const _aiKeyKey = 'secret_ai_api_key';
   static const _remoteKeyKey = 'secret_remote_exec_key';
 
+  /// Whether settings were ever saved (false on a first launch).
+  bool get hasSaved => _prefs.containsKey(_settingsKey);
+
   AppSettings load() {
     final raw = _prefs.getString(_settingsKey);
     if (raw == null) return const AppSettings();

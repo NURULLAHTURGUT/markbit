@@ -98,11 +98,14 @@ tag:work status:active lang:python has:tasks updated:week -draft
 
 ## 📥 Download
 
-Prebuilt Windows releases will be published on the [**Releases page**](https://github.com/NURULLAHTURGUT/markbit/releases). Until the first release, [build Markbit from source](#-build-from-source) — it takes a few minutes.
+Get the latest version from the [**Releases page**](https://github.com/NURULLAHTURGUT/markbit/releases/latest):
+
+- **`Markbit-Setup-<version>-x64.exe`** — installer (recommended). Installs for your user without administrator rights (or for all users, if you choose), adds Start menu and optional desktop shortcuts, and upgrades or uninstalls from *Settings → Apps*. Setup is available in English, Türkçe, Deutsch and Español, and Markbit starts in the language you picked.
+- **`Markbit-<version>-x64-portable.zip`** — no installation: unzip anywhere and run `markbit.exe`.
 
 | Platform | Status |
 | --- | --- |
-| Windows 10 / 11 (x64) | ✅ Tested — installer and portable zip coming with the first release |
+| Windows 10 / 11 (x64) | ✅ Installer and portable zip |
 | macOS, Linux, Android, iOS | 🧪 Builds from source, not yet tested — help welcome |
 
 > **Windows SmartScreen:** Markbit is not code-signed yet, so Windows may show *"Windows protected your PC"* on first launch. Click **More info → Run anyway**. You can always build it yourself from source.

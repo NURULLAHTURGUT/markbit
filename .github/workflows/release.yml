@@ -1,0 +1,74 @@
+name: Release Markbit
+# Push a version tag to publish a release:
+#   git tag v1.0.0 && git push origin v1.0.0
+# Running it by hand (Actions -> Release Markbit -> Run workflow) builds the
+# installer and zip as downloadable artifacts without publishing anything.
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.6'
+          channel: stable
+          cache: true
+
+      - name: Read version
+        id: version
+        run: |
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            $version = $env:GITHUB_REF_NAME.TrimStart('v')
+          } else {
+            $version = (Select-String -Path pubspec.yaml -Pattern '^version:\s*([0-9]+\.[0-9]+\.[0-9]+)').Matches[0].Groups[1].Value
+          }
+          if ($version -notmatch '^[0-9]+\.[0-9]+\.[0-9]+$') {
+            throw "Version '$version' must look like 1.2.3"
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - run: flutter pub get
+      - run: flutter analyze --no-pub
+      - run: flutter test --no-pub
+      - run: flutter build windows --release --no-pub --build-name=${{ steps.version.outputs.version }} --build-number=${{ github.run_number }}
+
+      - name: Package portable zip
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Compress-Archive -Path build/windows/x64/runner/Release/* `
+            -DestinationPath "dist/Markbit-${{ steps.version.outputs.version }}-x64-portable.zip"
+
+      - name: Build installer
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = Get-ChildItem "${env:ProgramFiles(x86)}\Inno Setup*\ISCC.exe", "$env:ProgramFiles\Inno Setup*\ISCC.exe" -ErrorAction SilentlyContinue |
+            Select-Object -First 1 -ExpandProperty FullName
+          if (-not $iscc) { throw 'Inno Setup compiler (ISCC.exe) not found' }
+          & $iscc "/DAppVersion=${{ steps.version.outputs.version }}" installer/markbit.iss
+          if ($LASTEXITCODE -ne 0) { throw "ISCC failed with exit code $LASTEXITCODE" }
+          Copy-Item installer/Output/*.exe dist/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Markbit-${{ steps.version.outputs.version }}-windows
+          path: dist/*
+
+      - name: Publish GitHub release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create $env:GITHUB_REF_NAME dist/* `
+            --title "Markbit ${{ steps.version.outputs.version }}" `
+            --generate-notes

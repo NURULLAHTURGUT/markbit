@@ -7,15 +7,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../application/providers.dart';
 import '../application/auto_backup.dart';
+import '../application/onboarding.dart';
 import '../application/persistence_coordinator.dart';
 import '../core/l10n/app_strings.dart';
 import '../core/theme/app_palette.dart';
 import '../core/theme/app_theme.dart';
+import '../core/theme/tokens.dart';
 import '../core/theme/window_theme.dart';
 import '../features/shell/workspace_page.dart';
 import '../features/shell/note_window.dart';
 import '../data/repository/library_repository.dart';
 import '../features/settings/settings_dialog.dart';
+import '../features/onboarding/onboarding_page.dart';
+import '../features/onboarding/splash_overlay.dart';
 
 class MarkbitApp extends ConsumerStatefulWidget {
   const MarkbitApp({super.key});
@@ -155,6 +159,8 @@ class _MarkbitAppState extends ConsumerState<MarkbitApp> {
     final themeId = ref.watch(settingsProvider.select((s) => s.themeId));
     final language = ref.watch(settingsProvider.select((s) => s.language));
     final scale = ref.watch(settingsProvider.select((s) => s.uiScale));
+    final onboarding = ref.watch(onboardingPendingProvider);
+    final splash = ref.read(onboardingEnabledProvider);
 
     final ThemeData light;
     final ThemeData dark;
@@ -187,11 +193,20 @@ class _MarkbitAppState extends ConsumerState<MarkbitApp> {
       ],
       home: switch (ref.read(noteWindowProvider)) {
         final String id => NoteWindowPage(noteId: id),
-        null => const WorkspacePage(),
+        null => AnimatedSwitcher(
+          duration: Motion.slow,
+          child: onboarding
+              ? const OnboardingPage(key: ValueKey('onboarding'))
+              : const WorkspacePage(key: ValueKey('workspace')),
+        ),
       },
-      builder: (context, child) => WindowTheme(
-        child: UiScale(scale: scale, child: child ?? const SizedBox.shrink()),
-      ),
+      builder: (context, child) {
+        final app = UiScale(
+          scale: scale,
+          child: child ?? const SizedBox.shrink(),
+        );
+        return WindowTheme(child: splash ? SplashOverlay(child: app) : app);
+      },
     );
   }
 }

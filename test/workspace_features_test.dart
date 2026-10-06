@@ -32,6 +32,7 @@ import 'package:markbit/domain/markdown_utils.dart';
 import 'package:markbit/domain/note_tasks.dart';
 import 'package:markbit/features/editor/note_editor.dart';
 import 'package:markbit/features/settings/settings_dialog.dart';
+import 'package:markbit/features/sidebar/sidebar.dart';
 import 'package:markbit/features/dialogs/task_dashboard.dart';
 import 'package:markbit/core/theme/app_theme.dart';
 import 'package:markbit/core/theme/app_palette.dart';
@@ -321,6 +322,49 @@ void main() {
     expect(Directory('${root.path}/notes').listSync(), isEmpty);
     expect(prefs.getKeys(), isEmpty);
     expect(c.read(settingsStoreProvider).aiApiKey, isEmpty);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
+  testWidgets('focus mode never hides navigation without an open note', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(1400, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    c.read(notesOverviewProvider.notifier).set(false);
+    c.read(openNoteProvider.notifier).open('one');
+    await tester.pumpWidget(
+      UncontrolledProviderScope(container: c, child: const MarkbitApp()),
+    );
+    await tester.pumpAndSettle();
+    double sidebarWidth() => tester
+        .getSize(
+          find
+              .ancestor(
+                of: find.byType(Sidebar),
+                matching: find.byType(AnimatedContainer),
+              )
+              .first,
+        )
+        .width;
+    expect(sidebarWidth(), greaterThan(0));
+
+    c.read(focusModeProvider.notifier).set(true);
+    await tester.pumpAndSettle();
+    expect(sidebarWidth(), 0);
+
+    // Closing the last tab leaves focus mode and brings navigation back.
+    c.read(openNoteProvider.notifier).closeTab('one');
+    await tester.pumpAndSettle();
+    expect(c.read(openNoteIdProvider), isNull);
+    expect(c.read(focusModeProvider), isFalse);
+    expect(sidebarWidth(), greaterThan(0));
+
+    // Turning focus mode on with nothing open does not hide anything.
+    c.read(focusModeProvider.notifier).set(true);
+    await tester.pumpAndSettle();
+    expect(sidebarWidth(), greaterThan(0));
+    c.read(focusModeProvider.notifier).set(false);
+    await drain(tester);
     await tester.pumpWidget(const SizedBox.shrink());
   });
 

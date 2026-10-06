@@ -6,6 +6,8 @@ import 'app/app.dart';
 import 'app/startup_error.dart';
 import 'core/l10n/app_strings.dart';
 import 'data/repository/settings_store.dart';
+import 'data/installer_language.dart';
+import 'application/onboarding.dart';
 import 'application/providers.dart';
 import 'data/repository/library_repository.dart';
 import 'data/seed.dart';
@@ -44,6 +46,7 @@ Future<void> main([List<String> args = const []]) async {
     }
     final settingsStore = SettingsStore(prefs);
     await settingsStore.initialize();
+    if (noteWindow == null) await applyInstallerLanguage(settingsStore);
     final language = settingsStore.load().language;
     AppStrings.current = AppStrings(
       language == 'system'
@@ -72,6 +75,7 @@ Future<void> main([List<String> args = const []]) async {
           // Only the main window schedules reminders and backups.
           reminderPlatformEnabledProvider.overrideWithValue(noteWindow == null),
           noteWindowProvider.overrideWithValue(noteWindow),
+          onboardingEnabledProvider.overrideWithValue(noteWindow == null),
         ],
         child: const MarkbitApp(),
       ),

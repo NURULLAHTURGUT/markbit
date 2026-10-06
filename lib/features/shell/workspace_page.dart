@@ -211,6 +211,13 @@ class _WorkspacePageState extends ConsumerState<WorkspacePage> {
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
+    // Closing (or trashing) the last open note leaves focus mode, so the
+    // sidebar and note list come back.
+    ref.listen<String?>(openNoteIdProvider, (_, id) {
+      if (id == null && ref.read(focusModeProvider)) {
+        ref.read(focusModeProvider.notifier).set(false);
+      }
+    });
 
     return CallbackShortcuts(
       bindings: _bindings(),
@@ -228,8 +235,14 @@ class _WorkspacePageState extends ConsumerState<WorkspacePage> {
                 final w = cons.maxWidth;
                 if (w < Breakpoints.compact) return _buildCompact(context);
 
-                final focus = ref.watch(focusModeProvider);
                 final overview = ref.watch(notesOverviewProvider);
+                // Focus mode hides all navigation, so it only applies while
+                // a note is open in the editor; otherwise the user would be
+                // stuck with no way back.
+                final focus =
+                    ref.watch(focusModeProvider) &&
+                    !overview &&
+                    ref.watch(openNoteIdProvider) != null;
                 final noteListVisible = ref.watch(noteListVisibleProvider);
                 final sidebarVisible = ref.watch(sidebarVisibleProvider);
                 final inline = w >= Breakpoints.medium;
