@@ -43,8 +43,10 @@ body:
     attributes:
       label: How did you install Markbit?
       options:
-        - Installer (Markbit-Setup)
-        - Portable zip
+        - Windows installer (Markbit-Setup)
+        - Windows portable zip
+        - macOS app
+        - Linux tar.gz
         - Built from source
     validations:
       required: true
@@ -52,7 +54,7 @@ body:
     id: os
     attributes:
       label: Operating system
-      placeholder: "Windows 11 24H2"
+      placeholder: "Windows 11 24H2, macOS 15.5, Ubuntu 24.04…"
     validations:
       required: true
   - type: textarea

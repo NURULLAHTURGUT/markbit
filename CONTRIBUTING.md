@@ -6,10 +6,10 @@ By taking part you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Ways to help
 
-- **Report a bug** — open an [issue](https://github.com/NURULLAHTURGUT/markbit/issues/new/choose) using the bug report form. Steps to reproduce and your Markbit / Windows version help a lot.
+- **Report a bug** — open an [issue](https://github.com/NURULLAHTURGUT/markbit/issues/new/choose) using the bug report form. Steps to reproduce, your Markbit version and your operating system help a lot.
 - **Suggest a feature** — use the feature request form and describe the problem you want to solve, not only the solution.
 - **Improve a translation** or add a new language — see [Translations](#translations).
-- **Test other platforms** — macOS, Linux and Android build from source but are not regularly tested yet.
+- **Test on your platform** — reports from different Windows, macOS and Linux setups are very helpful. Android and iOS build from source but are not released yet.
 - **Write code** — issues labelled `good first issue` are a good place to start. For larger changes, please open an issue first so we can agree on the approach before you spend time on it.
 
 Security problems should **not** be reported in public issues — see [SECURITY.md](SECURITY.md).
@@ -19,13 +19,13 @@ Security problems should **not** be reported in public issues — see [SECURITY.
 You need:
 
 - [Flutter 3.47.6](https://docs.flutter.dev/get-started/install) (stable channel)
-- On Windows: Visual Studio with the *Desktop development with C++* workload
+- The desktop toolchain of your platform: Visual Studio with the *Desktop development with C++* workload on Windows, Xcode on macOS, or `clang cmake ninja-build pkg-config libgtk-3-dev libsecret-1-dev` on Linux
 
 ```bash
 git clone https://github.com/NURULLAHTURGUT/markbit.git
 cd markbit
 flutter pub get
-flutter run -d windows
+flutter run -d windows   # or: -d macos, -d linux
 ```
 
 The [README](README.md#-build-from-source) explains release builds and the project structure.

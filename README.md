@@ -8,11 +8,15 @@
 A fast, offline-first notebook for developers — write notes, run the code inside them, plan your tasks and ask AI about it, all in one app.
 
 [![Validate](https://github.com/NURULLAHTURGUT/markbit/actions/workflows/validation.yml/badge.svg)](https://github.com/NURULLAHTURGUT/markbit/actions/workflows/validation.yml)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D6)
+![Platforms](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-555)
 ![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-[![Download for Windows](https://img.shields.io/badge/Download_for_Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/NURULLAHTURGUT/markbit/releases/latest)
+<p>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white" alt="Download for Windows"></a>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="Download for macOS"></a>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Download for Linux"></a>
+</p>
 
 [**Download**](#-download) · [Features](#-features) · [Build from source](#-build-from-source) · [Contributing](#-contributing)
 
@@ -112,16 +116,55 @@ tag:work status:active lang:python has:tasks updated:week -draft
 ## 📥 Download
 
 <p align="center">
-  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Download_for_Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white" alt="Download for Windows" height="44"></a>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white" alt="Download for Windows" height="40"></a>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="Download for macOS" height="40"></a>
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Download for Linux" height="40"></a>
 </p>
 
-Get the latest version from the [**Releases page**](https://github.com/NURULLAHTURGUT/markbit/releases/latest):
+Every release on the [**Releases page**](https://github.com/NURULLAHTURGUT/markbit/releases/latest) has a download for each platform:
 
-- **`Markbit-Setup-<version>-x64.exe`** — installer (recommended). Installs for your user without administrator rights (or for all users, if you choose), adds Start menu and optional desktop shortcuts, and upgrades or uninstalls from *Settings → Apps*. Setup is available in English, Türkçe, Deutsch and Español, and Markbit starts in the language you picked.
-- **`Markbit-<version>-x64-portable.zip`** — no installation: unzip anywhere and run `markbit.exe`.
+| Platform | Download | Requirements |
+| --- | --- | --- |
+| **Windows** | `Markbit-Setup-<version>-x64.exe` (installer, recommended) or `Markbit-<version>-x64-portable.zip` | Windows 10 or 11, 64-bit |
+| **macOS** | `Markbit-<version>-macos.zip` | macOS 10.15 or later, Apple silicon or Intel |
+| **Linux** | `Markbit-<version>-linux-x64.tar.gz` | 64-bit, GTK 3 (Ubuntu 22.04+, Fedora, Debian, …) |
 
-| Platform | Status |
+### Windows
+
+Run the installer: it installs for your user without administrator rights (or for all users, if you choose), adds Start menu and optional desktop shortcuts, and upgrades or uninstalls from *Settings → Apps*. Setup is available in English, Türkçe, Deutsch and Español, and Markbit starts in the language you picked. Prefer no installation? Unzip the portable zip anywhere and run `markbit.exe`.
+
+> **SmartScreen:** Markbit is not code-signed yet, so Windows may show *"Windows protected your PC"* on first launch. Click **More info → Run anyway**.
+
+### macOS
+
+Unzip the download and move **Markbit** to your *Applications* folder.
+
+> **First launch:** Markbit is not notarized by Apple yet, so macOS may say it *"cannot be opened because the developer cannot be verified"*. Right-click (or Control-click) **Markbit** in *Applications*, choose **Open**, then **Open** again. You only need to do this once.
+
+### Linux
+
+```bash
+tar -xzf Markbit-<version>-linux-x64.tar.gz
+./Markbit-<version>/markbit
+```
+
+Markbit needs GTK 3 and libsecret, which most desktops already include. On Ubuntu or Debian, file dialogs also need `zenity`:
+
+```bash
+sudo apt install libgtk-3-0 libsecret-1-0 zenity
+```
+
+### Where your notes live
+
+Uninstalling Markbit never deletes your notes. They are stored in:
+
+| Platform | Folder |
 | --- | --- |
+| Windows | `%APPDATA%\io.github.turgut\Markbit` |
+| macOS | `~/Library/Application Support/io.github.turgut.markbit/Markbit` |
+| Linux | `~/.local/share/io.github.turgut.markbit/Markbit` |
+
+--- | --- |
 | Windows 10 / 11 (x64) | ✅ Installer and portable zip |
 | macOS, Linux, Android, iOS | 🧪 Builds from source, not yet tested — help welcome |
 
@@ -148,7 +191,7 @@ Your notes live in `%APPDATA%\io.github.turgut\Markbit` on Windows — uninstall
 | Zoom interface in / out / reset | `Ctrl+=` / `Ctrl+-` / `Ctrl+0` |
 | Settings | `Ctrl+,` |
 
-All shortcuts can be changed in **Settings → Keyboard shortcuts**.
+On macOS, use **⌘ Cmd** instead of **Ctrl** (Markdown suggestions stay on **Ctrl+Space**). All shortcuts can be changed in **Settings → Keyboard shortcuts**.
 
 ---
 
@@ -169,22 +212,28 @@ API keys are stored in the operating system's secure storage and are never inclu
 
 ## 🛠️ Build from source
 
-**Requirements:** [Flutter 3.47.6](https://docs.flutter.dev/get-started/install) (stable) and, for Windows, Visual Studio with the *Desktop development with C++* workload.
+**Requirements:** [Flutter 3.47.6](https://docs.flutter.dev/get-started/install) (stable) plus the desktop toolchain of your platform:
+
+- **Windows:** Visual Studio with the *Desktop development with C++* workload
+- **macOS:** Xcode
+- **Linux:** `sudo apt install clang cmake ninja-build pkg-config libgtk-3-dev libsecret-1-dev`
 
 ```bash
 git clone https://github.com/NURULLAHTURGUT/markbit.git
 cd markbit
 flutter pub get
-flutter run -d windows
+flutter run -d windows   # or: -d macos, -d linux
 ```
 
-Release build:
+Release builds:
 
-```bash
-flutter build windows --release
-```
+| Platform | Command | Output |
+| --- | --- | --- |
+| Windows | `flutter build windows --release` | `build/windows/x64/runner/Release/` |
+| macOS | `flutter build macos --release` | `build/macos/Build/Products/Release/Markbit.app` |
+| Linux | `flutter build linux --release` | `build/linux/x64/release/bundle/` |
 
-The app is written to `build/windows/x64/runner/Release/markbit.exe`. Copy the whole `Release` folder to run it on another computer.
+On Windows and Linux, copy the whole output folder to run Markbit on another computer.
 
 Run the checks used by CI:
 
@@ -219,7 +268,7 @@ Contributions are very welcome — bug reports, ideas, translations and code. Re
 **Good first contributions**
 
 - 🌍 Improve the German and Spanish translations (`lib/core/l10n/`) or add a new language
-- 🐧 Test and polish the macOS, Linux and Android builds
+- 📱 Help bring Markbit to Android and iOS
 - 🐞 Pick an issue labeled `good first issue`
 
 Found a security problem? Please report it privately — see [SECURITY.md](SECURITY.md).
@@ -231,7 +280,7 @@ Found a security problem? Please report it privately — see [SECURITY.md](SECUR
 - [ ] Sync between devices (e.g. via a folder or Git)
 - [ ] Spell check
 - [ ] Signed Windows builds
-- [ ] Tested releases for macOS, Linux and Android
+- [ ] Android and iOS releases
 - [ ] Plugin / extension API
 
 ---
