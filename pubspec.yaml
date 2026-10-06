@@ -38,7 +38,7 @@ dependencies:
   printing: ^5.14.3
   scroll_to_index: 3.0.1
   shared_preferences: ^2.5.5
-  sqlite3: 2.9.4
+  sqlite3: 3.7.0
   # Bundles the native SQLite library used by `sqlite3` (no Dart import).
   sqlite3_flutter_libs: 0.5.42
   timezone: ^0.10.1
