@@ -12,6 +12,8 @@ A fast, offline-first notebook for developers — write notes, run the code insi
 ![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
+[![Download for Windows](https://img.shields.io/badge/Download_for_Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/NURULLAHTURGUT/markbit/releases/latest)
+
 [**Download**](#-download) · [Features](#-features) · [Build from source](#-build-from-source) · [Contributing](#-contributing)
 
 <img src="assets/onboarding/tour-editor.gif" alt="Writing a note in Markbit with live preview" width="900">
@@ -108,6 +110,10 @@ tag:work status:active lang:python has:tasks updated:week -draft
 ---
 
 ## 📥 Download
+
+<p align="center">
+  <a href="https://github.com/NURULLAHTURGUT/markbit/releases/latest"><img src="https://img.shields.io/badge/Download_for_Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white" alt="Download for Windows" height="44"></a>
+</p>
 
 Get the latest version from the [**Releases page**](https://github.com/NURULLAHTURGUT/markbit/releases/latest):
 
