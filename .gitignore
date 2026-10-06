@@ -50,18 +50,6 @@ app.*.map.json
 .env
 .env.*
 
-# AI assistant / agent files
-.claude/
-CLAUDE.md
-CLAUDE.local.md
-AGENTS.md
-.cursor/
-.cursorrules
-.windsurf/
-.windsurfrules
-.aider*
-.github/copilot-instructions.md
-
 # Signing keys and secrets (never commit these)
 *.jks
 *.keystore
