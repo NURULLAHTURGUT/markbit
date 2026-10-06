@@ -399,7 +399,7 @@ class FileLibraryRepository implements LibraryRepository {
     final notesDir = _key(_notesDir.path);
     final meta = _key(_metaFile.path);
     final timers = <String, Timer>{};
-    StreamSubscription<FileSystemEvent>? events;
+    final subscriptions = <StreamSubscription<FileSystemEvent>>[];
     late final StreamController<ExternalChange> controller;
     void schedule(String path) {
       final key = _key(path);
@@ -416,24 +416,32 @@ class FileLibraryRepository implements LibraryRepository {
 
     controller = StreamController<ExternalChange>(
       onListen: () {
-        events = root.watch(recursive: true).listen(
-          (event) {
-            schedule(event.path);
-            if (event is FileSystemMoveEvent && event.destination != null) {
-              schedule(event.destination!);
-            }
-          },
-          // A watcher failure must not take the app down; changes are
-          // still picked up at the next launch.
-          onError: (Object _) {},
-        );
+        // The root (meta.json) and the notes folder are watched separately:
+        // recursive watching does not report sub-folder changes on Linux.
+        for (final dir in [root, _notesDir]) {
+          subscriptions.add(
+            dir.watch().listen(
+              (event) {
+                schedule(event.path);
+                if (event is FileSystemMoveEvent && event.destination != null) {
+                  schedule(event.destination!);
+                }
+              },
+              // A watcher failure must not take the app down; changes are
+              // still picked up at the next launch.
+              onError: (Object _) {},
+            ),
+          );
+        }
       },
       onCancel: () async {
         for (final timer in timers.values) {
           timer.cancel();
         }
         timers.clear();
-        await events?.cancel();
+        for (final subscription in subscriptions) {
+          await subscription.cancel();
+        }
       },
     );
     return controller.stream;

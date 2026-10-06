@@ -828,7 +828,12 @@ void main() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
           const MethodChannel('pasteboard'),
-          (call) async => call.method == 'image' ? image.path : null,
+          // Like the plugin: a temporary file on Windows, bytes elsewhere.
+          (call) async => call.method != 'image'
+              ? null
+              : Platform.isWindows
+              ? image.path
+              : base64Decode(png),
         );
     addTearDown(
       () => TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
