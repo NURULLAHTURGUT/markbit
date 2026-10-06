@@ -9,11 +9,16 @@ updates:
       day: monday
     open-pull-requests-limit: 5
     groups:
-      # Patch and minor bumps arrive together; major versions get their own PR.
+      # Patch and minor bumps arrive together in one pull request.
       packages:
         update-types: [minor, patch]
     commit-message:
       prefix: "deps"
+    # Major versions can change APIs, so they are upgraded by hand, with
+    # testing. Dependabot security alerts still report every vulnerability.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
@@ -25,3 +30,6 @@ updates:
         patterns: ["*"]
     commit-message:
       prefix: "ci"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
