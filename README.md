@@ -14,6 +14,7 @@ A fast, offline-first notebook for developers — write notes, run the code insi
 
 [**Download**](#-download) · [Features](#-features) · [Build from source](#-build-from-source) · [Contributing](#-contributing)
 
+<img src="assets/onboarding/tour-editor.gif" alt="Writing a note in Markbit with live preview" width="900">
 
 </div>
 
@@ -43,6 +44,8 @@ Most note apps treat code as text. Markbit treats it as **something you can run*
 - **Templates** with variables (`{{date}}`, `{{weekday}}`, `{{cursor}}`…) and **daily notes**
 - Tabs, side-by-side notes, **separate note windows**, focus mode and a command palette
 
+<p align="center"><img src="assets/onboarding/tour-organize.png" alt="Notes overview with notebooks, statuses and tags" width="860"></p>
+
 
 ### Run code where you write it
 Every fenced block with a language tag gets a **Run** button (`Ctrl+Enter` inside a block). Output, errors, exit code and timing stream into a console panel, with stdin support.
@@ -51,6 +54,8 @@ Every fenced block with a language tag gets a **Run** button (`Ctrl+Enter` insid
 - **SQL:** runs locally with a bundled SQLite engine — blocks in a note share one database, so `CREATE`, `INSERT` and `SELECT` just work
 - **Remote (optional):** point Markbit at your own [Piston](https://github.com/engineer-man/piston) server. Nothing is sent anywhere unless you configure it.
 
+<p align="center"><img src="assets/onboarding/tour-run-code.png" alt="Running code blocks inside a note" width="860"></p>
+
 
 ### Tasks, reminders & calendar
 - Checkboxes become tasks with **due dates, priorities and repeat rules** (daily, weekdays, weekly, monthly, yearly)
@@ -58,12 +63,16 @@ Every fenced block with a language tag gets a **Run** button (`Ctrl+Enter` insid
 - Task dashboard with **Today / This week / Overdue** views
 - Monthly **calendar** with tasks, repeating occurrences and daily notes
 
+<p align="center"><img src="assets/onboarding/tour-tasks.png" alt="Task dashboard with due dates and priorities" width="860"></p>
+
 
 ### AI assistant
 - Works with **any OpenAI-compatible API**: OpenAI, OpenRouter, Groq, Gemini, Mistral, DeepSeek, or **local models via Ollama / LM Studio**
 - Sees the note you are editing; add other notes or files as extra context
 - Proposes edits to your note that you **review and approve** before anything is written
 - Creates charts and mind maps, writes tests, explains and fixes code
+
+<p align="center"><img src="assets/onboarding/tour-ai.png" alt="AI assistant next to the open note" width="520"></p>
 - Multiple conversations per note, model and reasoning-effort picker
 
 
@@ -75,6 +84,8 @@ tag:work status:active lang:python has:tasks updated:week -draft
 ```
 
 `tag:` `notebook:` `status:` `kind:` `lang:` `is:pinned|starred|locked` `has:code|tasks|images|cover` `created:` / `updated:` (`today`, `week`, `month`, `>2026-01-01`) · exclude with `-word` · combine with `OR`. Save any search as a **collection** in the sidebar.
+
+<p align="center"><img src="assets/onboarding/tour-search.png" alt="Command palette search with highlighted matches" width="860"></p>
 
 
 ### Your data, safely
