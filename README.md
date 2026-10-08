@@ -164,9 +164,6 @@ Uninstalling Markbit never deletes your notes. They are stored in:
 | macOS | `~/Library/Application Support/io.github.turgut.markbit/Markbit` |
 | Linux | `~/.local/share/io.github.turgut.markbit/Markbit` |
 
---- | --- |
-| Windows 10 / 11 (x64) | ✅ Installer and portable zip |
-| macOS, Linux, Android, iOS | 🧪 Builds from source, not yet tested — help welcome |
 
 > **Windows SmartScreen:** Markbit is not code-signed yet, so Windows may show *"Windows protected your PC"* on first launch. Click **More info → Run anyway**. You can always build it yourself from source.
 
